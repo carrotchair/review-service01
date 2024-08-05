@@ -1,0 +1,25 @@
+type Query {
+    getAllMovies: [Movie]
+    getSingleMovie(imdbId: String!): Movie
+}
+
+type Movie {
+    id: ID!
+    imdbId: String!
+    title: String!
+    releaseDate: String
+    trailerLink: String
+    poster: String
+    genres: [String]
+    backdrops: [String]
+    reviews: [Review]
+}
+
+type Review {
+    id: ID!
+    body: String
+#    created: LocalDateTime
+#    updated: LocalDateTime
+}
+
+#scalar LocalDateTime - scalar
