@@ -1,5 +1,5 @@
 type Query {
-    getAllMovies: [Movie]
+    getAllMovies2: [Movie]
     getSingleMovie(imdbId: String!): Movie
 }
 
