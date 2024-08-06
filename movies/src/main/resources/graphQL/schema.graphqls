@@ -1,12 +1,17 @@
 type Query {
-    getAllMovies2: [Movie]
-    getSingleMovie(imdbId: String!): Movie
+    getListOfAllMovies: [Movie]
+    #getSingleMovie(imdbId: String!): Movie
+    getSingleMovieGraph(imdbId: String!): Movie
 }
 
+#type Mutation {
+#    createReviewGraph(review: ReviewInput): Review
+#}
+
 type Movie {
-    id: ID!
+    id: ID! # sign ! says it has to be a non null type
     imdbId: String!
-    title: String!
+    title: String
     releaseDate: String
     trailerLink: String
     poster: String
@@ -23,3 +28,7 @@ type Review {
 }
 
 #scalar LocalDateTime - scalar
+
+#input ReviewInput {
+#    body: String
+#}
