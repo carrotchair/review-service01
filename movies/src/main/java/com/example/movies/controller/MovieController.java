@@ -5,8 +5,6 @@ import com.example.movies.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,25 +18,16 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-//    private Query query;
-
-    @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies() {
-        return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
-    }
-
     @QueryMapping
-    public List<Movie> getListOfAllMovies() {
+    @GetMapping
+    public List<Movie> getAllMovies() {
         return movieService.findAllMovies();
     }
 
+    @QueryMapping
     @GetMapping("/{imdbId}")
-    public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable String imdbId) {
-        return new ResponseEntity<>(movieService.singleMovie(imdbId), HttpStatus.OK);
+    public Optional<Movie> findMovieByImdbId(@PathVariable @Argument String imdbId) {
+        return movieService.findMovieByImdbId(imdbId);
     }
 
-    @QueryMapping
-    public Optional<Movie> getSingleMovieGraph(@PathVariable @Argument String imdbId) {
-        return movieService.singleMovie(imdbId);
-    }
 }

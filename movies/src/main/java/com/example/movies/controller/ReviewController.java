@@ -20,4 +20,8 @@ public class ReviewController {
     public ResponseEntity<Review> createReview(@RequestBody Map<String, String> payload) {
         return new ResponseEntity<Review>(reviewService.createReview(payload.get("reviewBody"), payload.get("imdbId")), HttpStatus.OK);
     }
+
+    //TODO
+    //Create mutation query (means post query for graphql) for adding reviews
+
 }
