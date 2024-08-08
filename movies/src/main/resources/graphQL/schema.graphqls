@@ -1,7 +1,6 @@
 type Query {
-    getListOfAllMovies: [Movie]
-    #getSingleMovie(imdbId: String!): Movie
-    getSingleMovieGraph(imdbId: String!): Movie
+    getAllMovies: [Movie]
+    findMovieByImdbId(imdbId: String!): Movie
 }
 
 #type Mutation {
@@ -9,7 +8,7 @@ type Query {
 #}
 
 type Movie {
-    id: ID! # sign ! says it has to be a non null type
+    id: ID!
     imdbId: String!
     title: String
     releaseDate: String
