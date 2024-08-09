@@ -20,7 +20,7 @@ public class ReviewService {
     @Autowired
     ReviewInterface reviewInterface;
 
-    public void getAllMoviesAndAllReviews(String imdbId) {
-        reviewInterface.getSmth(imdbId);
+    public void getAllMoviesAndAllReviews(String graphQLQuery) {
+        reviewInterface.getSmth(graphQLQuery);
     }
 }
